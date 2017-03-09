@@ -1,0 +1,308 @@
+% Preview source code
+
+%% LyX 2.1.4 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% A simple dot to overcome graphicx limitations
+\newcommand{\lyxdot}{.}
+
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{Revised Goodwin Model - Reconsidering ``Constants'' as Time Dependent
+Variables}
+
+\maketitle
+
+\section*{The Goodwin Model}
+
+We begin with the following assumptions for convince. The theoretical
+economy being considered is a \emph{closed }economy, simply meaning
+that there is no international trade.\\
+\\
+\textbf{(A1)} Technical Progress grows at a constant rate.\\
+\textbf{(A2)} The labor force grows at a constant rate.\\
+\textbf{(A3)} There exist only two homogeneous and non-specific factors
+of production: capital and labor.\\
+\textbf{(A4)} All quantities are real and net.\\
+\textbf{(A5)} All wages are consumed; all profits are saved and invested.\\
+\textbf{(A6)} There is a constant capital-output ratio.\\
+\textbf{(A7)} A real wage that rises in the neighborhood of full employment,
+expressed by the Phillips Curve.\\
+\\
+Further, the following list of abbreviations, definitions, and relations
+describes the framework of the economy. 
+\begin{itemize}
+\item Output: $Y$
+\item National Income: $q$
+\item Labor: $L$ 
+\item Capital: $k$
+\item Wage Rate: $w$
+\item Labor Productivity: $a$
+\item Labor Income: $wL$
+\item Labor Income Share: $u$
+\item Profit Income Share: $\pi$
+\item Savings: $(1-\frac{w}{a})Y$
+\item Capital Output Ratio: $\sigma$
+\item Labor Supply: $N$
+\item Employment Rate: $v$
+\end{itemize}
+We begin with the tautological equation
+
+\begin{equation}
+q=\frac{Y}{L}\cdot\frac{L}{N}\cdot N
+\end{equation}
+ where $\frac{Y}{L}$ is defined to be labor productivity and $\frac{L}{N}$
+is defined to be the employment rate. Thus the equation simplifies
+to:
+\begin{equation}
+q=a\cdot v\cdot N.
+\end{equation}
+ We wish to take the logarithmic derivative with respect to time.
+With regard to the construction of our model, taking the logarithmic
+derivative allows us to understand how variables in our system change
+over time. Then, taking the logarithmic derivative of (2) yields
+\begin{equation}
+\frac{\dot{q}}{q}=\frac{\dot{a}}{a}+\frac{\dot{v}}{v}+\frac{\dot{N}}{N}
+\end{equation}
+and simplifies to
+\begin{equation}
+\frac{\dot{q}}{q}=\alpha+\frac{\dot{v}}{v}+\beta.
+\end{equation}
+ Here, $\alpha$ is the increase in productivity - \emph{i.e. }$a=a_{0}e^{\alpha t}$
+- and $\beta$ is the growth rate in labor supply - \emph{i.e. $N=N_{0}e^{\beta t}$}.
+Recall from our assumptions, that both $\alpha$ and $\beta$ are
+constants. 
+
+The national income is distributed 100 percent between capitalist's
+share of national income (\emph{$\pi$)} and worker's share of national
+income ($v$), which can be mathematically expressed by $1=u+\pi$.
+Further, by assumption, since all profits are reinvested, it follows
+that 
+\[
+\dot{k}=q\cdot\pi
+\]
+\[
+\frac{\dot{k}}{q}=1-u.
+\]
+ $\sigma$ represents a constant capital output ratio. Mathematically,
+then, $\sigma=\frac{k}{q}$. Diving by $\sigma$ yields:
+\begin{align*}
+\frac{\dot{k}}{\sigma}= & \frac{(1-u)}{\sigma}\cdot q\\
+\frac{q\cdot\dot{k}}{k}= & \frac{(1-u)}{k}q^{2}\\
+\frac{\dot{k}}{k}= & \frac{(1-u)}{k}q\\
+\frac{\dot{k}}{k}= & \frac{(1-u)}{\sigma}.
+\end{align*}
+We note some observations which will help us simplify our equation.
+Note first that the equation above states that the growth rate of
+capital is dependent on worker's share of national income. As a result,
+we can replace the growth rate of capital with the growth rate of
+national income. Similarly, since we know that $\sigma$ is constant,
+the growth rate of national income must be the same as the growth
+rate of the capital stock. Thus with these two assertions, a fluctuation
+in capital leads directly to a fluctuation in the national income:
+\begin{equation}
+\frac{\dot{k}}{k}=\frac{\dot{q}}{q}=\frac{1-u}{\sigma}.
+\end{equation}
+Setting (4) equal to (5) and solving for $\dot{v}$, we get the first
+equation differential equation describing employment rate:
+\begin{equation}
+\dot{v}=v(t)\left(\frac{1}{\sigma}-(\alpha+\beta)-\frac{u(t)}{\sigma}\right).
+\end{equation}
+
+
+The second equation is established in a similar manner. To assist
+in defining it, we begin with the Phillips Curve. Phillips \cite{Phillips58}
+attempted to estimated a correlation between changes in wages and
+unemployment rate. Goodwin took advantage of this relationship, however
+for simplicity, he proposed a linearized version. While the exact
+relationship is not known, this linearized version will suffice to
+model the relationship. To transform the unemployment rate into the
+employment rate, we begin by noting that the labor supply in our economy
+is comprised fully of employed and unemployed workers, \emph{i.e.}
+$1=v+z$ where $z$ is defined to be the unemployment rate. Figure
+1 graphically notes the transformation of the Phillips curve from
+an unemployment rate to an employment rate. 
+
+%\begin{figure}
+%\centering{}\includegraphics[scale=0.5]{\string"Thesis Figures/Screen Shot 2016-12-01 at 2.12.09 PM\string".png}\caption{Transformation of the Phillips Curve}
+%\end{figure}
+
+
+With the transformed and linearized Phillips curve, we note
+\begin{equation}
+\frac{\dot{w}}{w}=-\gamma+\rho v.
+\end{equation}
+Here, $\gamma$ is defined to be the lines intersection with the $y$-axis
+and $\rho$ is the slope of the line. We define worker's share of
+national income as 
+\begin{equation}
+u=\frac{w}{a}.
+\end{equation}
+A logarithmic differentiation with respect to time yields the growth
+rate of worker's share of national income
+\[
+\frac{\dot{u}}{u}=\frac{\dot{w}}{w}-\frac{\dot{a}}{a}
+\]
+\begin{equation}
+\frac{\dot{u}}{u}=\frac{\dot{w}}{w}-\alpha.
+\end{equation}
+ Finally, plugging (7) into (9) and solving for $u$ yields the following
+equation for change in worker's share of national income:
+\begin{equation}
+\dot{u}=u(t)\left(-(\alpha+\gamma)+(\rho v(t))\right)
+\end{equation}
+The differential equation describing the dynamics of worker's share
+of national income is analogous to the equation describing the predator
+population in the Lotka-Volterra model.
+
+To summarize, we have a system of differential equations to describe
+the Goodwin Model:
+
+\begin{align}
+\dot{v}= & v(t)\left(\frac{1}{\sigma}-(\alpha+\beta)-\frac{u(t)}{\sigma}\right)\label{eq:2.17-1}\\
+\dot{u}= & u(t)\left(-(\alpha+\gamma)+(\rho v(t))\right).\nonumber 
+\end{align}
+
+
+
+\section*{Revised Goodwin Model}
+
+While the original Goodwin model is important and valuable - the simplicity
+with which it is written and the dynamic properties it yields are
+both interesting from a mathematical and economic perspective - it
+is by no means a realistic model of a countries economy. Goodwin himself
+commented that his model is ``quite unrealistic . . . of cycles in
+growth rates'' for a given country. Despite its limitations, the
+model has proved to be remarkably popular and has inspired a huge
+literature. Part of the model's enduring appeal lies in its simplicity;
+in particular, the elegance with which it illustrates the cyclical
+relationship between income distribution and employment in a dynamic
+capitalist economy over the course of the business cycle. Because
+of this, many revisions to Goodwin's original model have been proposed,
+all which look to more accurately model cycles of growth rates in
+an economy. 
+
+This section looks to do just that. When considering the constants
+outlined in Goodwin's model, it is not unrealistic to expect some
+variability in them, especially over great periods of time. This becomes
+even more apparent when trying to find data to ultimately test Goodwin's
+proposed model. The most straightforward way to estimate Goodwin's
+constants is through a time series dataset. There are two possibilities
+for the time series used to estimate the constants, each of which
+can potentially cause problems with the dynamics of the theoretical
+model. An estimated time series can either be stationary or unstationary
+process. If a time series is found to be unstationary, the problem
+is obvious: clearly, the estimation for a given ``constant'' is
+far from constant and would therefore be inappropriate to simply take
+an average. However, a stationary series still presents its own problems;
+the variance of the time series could be so large that, while the
+series is stationary, values are varying so greatly that simply taking
+an average of the time series would not work. It seems likely, therefore,
+that when testing Goodwin's model, instead of estimating constants,
+we will have variables in our system in place of our constants. It
+needs to be determined, therefore, if looking at these constants as
+time series effects the structure, and ultimately the dynamics, of
+the model. 
+
+There are five constants present in Goodwin's model: $\alpha$, $\beta$,
+$\sigma$, $\rho$, and $\gamma$. Both $\rho$and $\gamma$are estimated
+through a simple linear regression model; they will remain constants
+in our model. The main concern is in the estimation of $\alpha$,
+$\beta$, and $\sigma$. If any of these constants are derived through
+some process of taking derivatives, then our model will change. As
+we take a derivative of a time dependent variable, rather than a constant,
+additional time dependent terms will pop out of the derivation. Recall
+that both $\alpha$ and $\beta$ are derived through taking the logarithmic
+derivative of (2). We therefore suspect that when considering these
+values as time series, rather than as constants, the structure of
+the Goodwin model will change. 
+
+Notice that equation (1) can be rewritten as 
+\[
+q=a\cdot l.
+\]
+ In Goodwin's original derivation of the model, he looks at the logarithmic
+derivative of $a$, which can be rewritten as $\frac{q}{l}$. Therefore,
+$\dot{a}=\frac{d}{dt}\left(\frac{q}{l}\right)$. Taking the logarithmic
+derivative of $a$, we are left with a new expression:
+\begin{eqnarray*}
+\frac{\dot{a}}{a} & = & \frac{\frac{d}{dt}(a_{0}e^{\alpha t})}{a}\\
+ & = & \frac{a_{0}e^{\alpha t}(\dot{\alpha}t+t)}{a}\\
+ & = & \frac{a\cdot(\dot{\alpha}t+t)}{a}\\
+ & = & \dot{\alpha}t+t
+\end{eqnarray*}
+since $\alpha$ is now a function of time. Similarly, notice that
+\begin{eqnarray*}
+\frac{\frac{d}{dt}\left(\frac{q}{l}\right)}{\left(\frac{q}{l}\right)} & = & \frac{l\dot{q}+\dot{l}q}{l^{2}}\cdot\frac{l}{q}\\
+ & = & \frac{\dot{q}}{q}-\frac{\dot{l}}{l}.
+\end{eqnarray*}
+We are left with 
+\[
+\frac{\dot{q}}{q}-\frac{\dot{l}}{l}=\dot{\alpha}t+t.
+\]
+We can see that we can rewrite this expression in terms of $\dot{l}$,
+which will be of some assistance later in our derivation of the model:
+\begin{eqnarray*}
+\frac{\dot{l}}{l} & = & \frac{\dot{q}}{q}-(\dot{\alpha}t+t)\\
+ & = & \left(\frac{1-u}{\sigma}\right)-(\dot{\alpha}t+t)
+\end{eqnarray*}
+where $\frac{\dot{q}}{q}=\left(\frac{1-u}{\sigma}\right)$, which
+is shown in the original derivation of the model.
+
+Similarly, observe that when consider the logarithmic derivative of
+$v$, we will get a new expression in place of $\beta$. Since $v=\frac{l}{N}$,
+we have that $\dot{v}=\frac{d}{dt}\left(\frac{l}{N}\right)$. Thus,
+\begin{eqnarray*}
+\frac{\dot{v}}{v} & = & \frac{\frac{d}{dt}\left(\frac{l}{N}\right)}{\frac{l}{N}}\\
+ & = & \frac{N\dot{l}+\dot{N}l}{N^{2}}\cdot\frac{N}{l}\\
+ & = & \frac{\dot{l}}{l}-\frac{\dot{N}}{N}
+\end{eqnarray*}
+To simplify, we need to find an expression for $\frac{\dot{N}}{N}$,
+since we already have an expression for $\frac{\dot{l}}{l}$. Notice
+that 
+\begin{eqnarray*}
+\frac{\dot{N}}{N} & = & \frac{\frac{d}{dt}(N_{0}e^{\beta t})}{N}\\
+ & = & \frac{N\cdot(\dot{\beta}t+t)}{N}\\
+ & = & \dot{\beta}t+t
+\end{eqnarray*}
+which is different from our original expression of just $\beta$ because
+$\beta$ is now a time dependent variable. Substituting our expression
+of $\frac{\dot{l}}{l}$ and $\frac{\dot{N}}{N}$ and solving for $\dot{v}$,
+we are left with the first revised equation in the Goodwin model:
+\[
+\dot{v}=v(t)\left(\frac{1-u(t)}{\sigma}-\left[(\dot{\alpha}t+t)+(\dot{\beta}t+t)\right]\right).
+\]
+
+
+The second equation in the Goodwin model can be rederived in a similar
+fashion, whereby treating $\alpha$ as a time dependent derivative.
+Recall that $u=\frac{w}{a}.$ Then, taking the logarithmic derivative
+\begin{eqnarray*}
+\frac{\dot{u}}{u} & = & \frac{\dot{w}}{w}-\frac{\dot{a}}{a}\\
+ & = & (-\gamma+\rho v)-(\dot{\alpha}t+t)
+\end{eqnarray*}
+where $\frac{\dot{w}}{w}$ is defined in the original derivation of
+the model. Hence, solving for $\dot{u}$, we are left with the second
+equation in the revised Goodwin Model:
+\[
+\dot{u}=u(t)\left(\gamma+\rho v(t)-(\dot{\alpha}t+t)\right)
+\]
+Our model is therefore summarized by the following two equations:
+\begin{eqnarray*}
+\dot{v} & = & v(t)\left(\frac{1}{\sigma}-\left[(\dot{\alpha}t+t)+(\dot{\beta}t+t)\right]-\frac{u(t)}{\sigma}\right)\\
+\dot{u} & = & u(t)\left(\gamma+\rho v(t)-(\dot{\alpha}t+t)\right).
+\end{eqnarray*}
+ 
+\end{document}

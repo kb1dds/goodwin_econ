@@ -1,0 +1,50 @@
+SIMPLEX notes for economic modeling
+=====
+
+Legend:
+*,-  status item (including tasks for other teams)
++ task
+
+Attendees: Coyle, Fantie, Williams, Robinson
+
+Note: Next meeting February 2
+
+Synopsis:
+---
+
+
+Action items:
+---
+
+Coyle:
++ Answer questions about your document!
++ Find examples of local sections that don't extend -- explain the implications of this
+ - Systematically examine the space of partial assignments to various elements in the poset 
+
+Fantie:
++ Read Philip's document
++ Re-look at pysheaf
+ - SheafCoface class is largely under construction in that .corestriction --> .restriction, these will probably end up being some Morphism class in themselves
+ - Have a view towards implementing our sheaf models in pysheaf natively
+
+Williams:
++ Write an abstract for the Student Research Conference (max 1000 characters)
+ - Share a draft with the group for feedback
+ - Final submission is due February 10
++ Read Philip's document
++ Read up on bifurcation analysis, read Strogatz's book on Dynamical systems
+ - End goal is to understand whether Ishiyama's model goes through any interesting bifurcations when lags in wage responses are introduced
+
+Fantie/Williams:
++ Can we identify 2 countries and 2 products and get data?
+ - Possibly use bundles instead of 2 products as a proxy
+
+Kraft:
++ Read Ishiyama paper
+
+Robinson:
++ (In progress) Working through pysheaf trade space analysis
+ - Aim to get consistency radius
++ (Low priority) How to systematically do bifurcation analysis on a parametrized sheaf model of an ODE system
+ - Essentially, what do global sections of a (pre)sheaf of smooth manifolds look like?  Is there an easy way to examine them using, say, transversality?
+ - Of course, a sheaf of smooth manifolds would need gluing axioms satisfied, which might not work out! We might need stratified manifolds throughout... hmm...

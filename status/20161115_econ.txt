@@ -1,0 +1,43 @@
+SIMPLEX notes for economic modeling
+=====
+
+Legend:
+*,-  status item (including tasks for other teams)
++ task
+
+Attendees: Coyle, Williams, Robinson
+
+Synopsis:
+---
+
+* Williams and Coyle constructed a model of competitive trade of three countries
+ - Countries 1 and 3 sell a common good to Country 2, who sells different products to Countries 1 and 3
+ - Using Goodwin model in each country
+ - Ishiyama model for trade between countries 1 and 2, and 2 and 3, but...
+ - There's an additional competitive link between Countries 1 and 3, there's a common price
+
+* Williams and Coyle construct a two country model of vertical trade and specified what a 3 country vertical trade model might look like
+ - But we don't know if it's actually vertical trade because of concerns about feedback loops
+
+* Question (for two country Ishiyama model): Let's say that we fix price 1. Can we say anything that is happening in country 1? I.e. can we backtrack and make inferences about back in time? If we have a local section at p_1, how far can we extend this section? To the state space? To u_1, v_1.
+ - Does this allow us to inferences about whether the Goodwin model has broken down in country one?
+ - Essentially asking about maximal local sections or approximate sections
+
+Action items:
+---
+
+Coyle/Williams:
++ Compute equilibria for the competitive three country model
++ (on hold until Robinson finished pysheaf) Can we identify 2 countries and 2 products and get data? 
+
+Coyle:
+* Coyle contacted the econ department, but no answer yet... We have questions about
+ - Realism of the models we've made thus far
+ - Availability of data to test these models
+ - Should vertical trade models include feedback or not?
+
+Robinson:
++ Actually do the pysheaf trade space analysis as promised (for months now!)
++ (Low priority) How to systematically do bifurcation analysis on a parametrized sheaf model of an ODE system
+ - Essentially, what do global sections of a (pre)sheaf of smooth manifolds look like?  Is there an easy way to examine them using, say, transversality?
+ - Of course, a sheaf of smooth manifolds would need gluing axioms satisfied, which might not work out! We might need stratified manifolds throughout... hmm...

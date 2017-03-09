@@ -1,0 +1,79 @@
+SIMPLEX notes for economic modeling
+=====
+
+Legend:
+*,-  status item (including tasks for other teams)
++ task
+
+Attendees: Coyle, Williams, Robinson
+
+Synopsis:
+---
+
+* Equilibrium analysis
+ - There is exactly one equilibrium for a single country Goodwin model.  Since the Ishiyama model includes two single country models exactly as Goodwin models, this means that each country's equilibrium (u=workers' share,v=employment rate) is determined from the outset.  Ishiyama's pricing structure has these two country (u_1,v_1),(u_2,v_2) always uniquely determine commodity prices.  Thus there is exactly one equilibrium, always.
+ - The Goodwin model for a single country is conservative, so the equilibrium is not stable, but is a cycle.  Ishiyama's point is that when the countries engage in trade, the equilibria do not change, but the dynamics become chaotic.  
+ - It is unclear whether there are stability/chaotic bifurcations as the pricing parameters change away from the limits 0 < theta_1,theta_2 < 1
+
+* Three country equilibrium model with horizontal pairwise trade has similar equilibrium structure, ie. exactly one equilibrium.  
+ - Question: is there still chaotic dynamics?
+ - Observation: If country 1 trades with country 2 and 3, the equilibrium prices and economic state in country 1 appears to be independent of whether countries 2 and 3 trade with each other
+  . The dynamics may be quite different, though!
+  . Kraft suspects that the equilibria being unchanged is due to a scale invariance
+
+* Vadasz model extends the Goodwin model to consider some delays in the dynamical system for a single country
+ - The dynamics appear to have (always) three equilibria, and an asymptotic limit cycle
+ - Question: Can we cut the Ishiyama model of trade pricing and splice it between two Vadasz models?  (Seems like an easy construction)
+  . What happens dynamically?
+
+-----------
+
+Attendees: Coyle, Williams, Robinson, Kraft (AU Econ)
+
+Agenda:
+---
+
+* Brief overview of our approach and objectives
+* Realism of the models we've made thus far
+ - Ishiyama model
+ - Vadasz model
+* Do people really not look at economic trade networks?
+* Availability of data to test these models
+* Should vertical trade models include feedback or not?
+
+Synopsis:
+---
+
+* Goodwin models are quite elegant and attractive, very little work extending them to networks has been done not because they're uninteresting, but because the mathematics apparently becomes daunting
+* Questions about extending local sections over part of Ishiyama's two country model appear to lead to interesting economic questions
+ - Especially the implications that one economy has on another after they begin trading
+* Interesting question: what happens before and after two countries engaged in trading decide to join interest rates and exchange rates?
+ - This matters a lot to EU economic policy: Ireland's economy behaved unexpectedly, and could have factored into UK's decision to leave the EU
+ - Interest and exchange rate models could factor into something like Ishiyama's pricing structure
+ - The boundary conditions at the time when the model changes can be nicely managed via a sheaf morphism, Robinson thinks
+* For the Ishiyama model, we can think of the prices and goods as being baskets rather than individual products
+ - These should (roughly at least) satisfy the hypotheses of horizontal trade
+* Avoid studying vertical trade -- it's quite different than what we've been doing thus far.  Additionally, using baskets of goods should avoid the necessity of handling vertical trade
+* Data should exist for all of the Goodwin variables (workers' share, employment rate, price indices for goods being traded between countries) at quarterly updates at the very least.  
+ - Expect cycles around 5-10 years
+ - May have to aggregate the volumes of goods involved in trades with their respective export/import prices.  That's economically reasonable
+ 
+Action items:
+---
+
+Coyle/Williams:
++ Send Ishiyama paper to Kraft
++ Question (for two country Ishiyama model): Let's say that we fix prices 1 and 2.  (That is, pick its value and assert its derivative vanishes) Can we say anything that is happening in country 1? I.e. can we backtrack and make inferences about back in time? If we have a local section at p_1, how far can we extend this section? To the state space? To u_1, v_1?
+ - Does this allow us to inferences about whether the Goodwin model has broken down in country one?
+ - Essentially asking about maximal local sections or approximate sections
+ - This feels like we're asking about the economic effects of certain trade policies or treaties.
++ (on hold until Robinson finished pysheaf) Can we identify 2 countries and 2 products and get data? 
+
+Kraft:
++ Read Ishiyama paper
+
+Robinson:
++ Actually do the pysheaf trade space analysis as promised (for months now!)
++ (Low priority) How to systematically do bifurcation analysis on a parametrized sheaf model of an ODE system
+ - Essentially, what do global sections of a (pre)sheaf of smooth manifolds look like?  Is there an easy way to examine them using, say, transversality?
+ - Of course, a sheaf of smooth manifolds would need gluing axioms satisfied, which might not work out! We might need stratified manifolds throughout... hmm...

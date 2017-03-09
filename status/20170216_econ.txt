@@ -1,0 +1,62 @@
+SIMPLEX notes for economic modeling
+=====
+
+Legend:
+*,-  status item (including tasks for other teams)
++ task
+
+Attendees: Coyle, Fantie, Williams, Robinson
+
+Note: Next meeting February 23, 11:30am
+
+Synopsis:
+---
+
+* PySheaf update finally pushed to GitHub!
+* Talked about encoding the models in pysheaf
+ - Let's focus on the Goodwin model first
+ - Then do the extended Goodwin model
+ - Look at pysheaf/tests/search_rescue_test.py for how to structure the code
+* Getting data for the (extended) Goodwin model
+ - It looks like timeseries for u and v are going to be available
+ - There are 5 constants that need to be estimated
+  . 2 of them are straightforward to get via a regression using linearized Philips curve
+  . the other 3 probably can be estimated but will likely be timeseries in their own right...  Does this impact the dynamics?
+ - Pricing is going to be tricky since most countries don't have a single trading partner
+  . US and Canada might be the best option, though it's far from perfect
+* We'll reconnect with Prof. Kraft once we have data in hand and constants all estimated
+ - That way we can get a "blessing" that we're on the right path
+
+Action items:
+---
+
+Coyle:
++ Working through parameter estimation for Goodwin model's constants
+
+Fantie:
+* Finished reading Philip's document!
+* Working through understanding how to encode sheaves in PySheaf...
++ Encode the Goodwin model in PySheaf, and then the extended Goodwin model
++ (Next) Data parser...
+ . suggestion is to python pandas library
+ . might need to use a python-based scraping library
+
+Williams:
++ Read up on bifurcation analysis, read Strogatz's book on Dynamical systems
+ - End goal is to understand whether Ishiyama's model goes through any interesting bifurcations when lags in wage responses are introduced
++ Working through parameter estimation for Goodwin model's constants
+
+Coyle/Williams:
++ Can we identify 2 countries and 2 products and get data?
+ - Possibly use bundles instead of 2 products as a proxy
+
+Kraft:
++ Read Ishiyama paper
++ We'll aim to reconnect soon, essentially after Coyle/Williams finish parameter estimation
+
+Robinson:
++ Still looking into how AU hires consultants... grr.
+* PySheaf update is now completed!
++ (Low priority) How to systematically do bifurcation analysis on a parametrized sheaf model of an ODE system
+ - Essentially, what do global sections of a (pre)sheaf of smooth manifolds look like?  Is there an easy way to examine them using, say, transversality?
+ - Of course, a sheaf of smooth manifolds would need gluing axioms satisfied, which might not work out! We might need stratified manifolds throughout... hmm...

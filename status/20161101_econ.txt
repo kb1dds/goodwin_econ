@@ -1,0 +1,32 @@
+SIMPLEX notes for economic modeling
+=====
+
+Legend:
+*,-  status item (including tasks for other teams)
++ task
+
+Attendees: Coyle, Williams, Robinson
+
+Synopsis:
+---
+
+* Robinson has been revising multimodel.pdf "Sheaf and cosheaf methods...".  Expect final version end of this week.  Beware! Many annoying errors found...
+* Coyle and librarian completed literature search on use of Goodwin model and networked international trade beyond two countries
+ - Finding: Apparently this has not been done at all
+* Coyle and Williams: succeeded at sheafification of Goodwin model for one country with a closed economy
+
+Action items
+---
+
+Robinson:
++ Circulate new version of "multimodel.pdf" incorporating many (embarrassing) corrections
+
+Coyle/Williams:
++ Construct diagram for the Goodwin model of two countries
+ - Scrape all variables
+ - write dependency diagram
+ - expand dependency diagram
+ - Form state spaces diagram
+ - Expectation: the original Goodwin model diagram will appear two times as subdiagrams, interlinked in some way.  What is that linkage?
++ (Next) What is missing from the linkage?
++ (Next) Generalize to more than two countries

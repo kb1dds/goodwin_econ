@@ -1,0 +1,47 @@
+SIMPLEX notes for economic modeling
+=====
+
+Legend:
+*,-  status item (including tasks for other teams)
++ task
+
+Attendees: Coyle, Williams, Robinson
+
+Synopsis:
+---
+
+* Paired Goodwin models versus Ishiyama's model
+ - We realized that there is a big difference between a pair of Goodwin models (u_i,v_i, u_i', v_i') are all self-dependent and what Ishiyama's paper develops, in which u_i depends explicitly on p_i
+ - The paired Goodwin models run the two countries independently, which then determine the prices.  The only way effects from one country show up in the other is via additional constraints on price
+ - Ishiyama's model has the price explicitly determines the u_i...
+
+* Extending local sections (all on paired Goodwin, not Ishiyama)
+ - We found that fixing price, price derivative, then one of the three of (u_1, v_1, u_2, v_2) is determined by the others
+ - The Ishiyama equations on price result in a 3-dimensional subspace of (u_1, v_1, P_1, u_2, v_2, P_2) being the solution space
+ - So basically, extending global sections is super-easy.  Buuuuut, this is probably an effect of the fact that we're not using Ishiyama's model
+
+Action items:
+---
+
+Coyle:
+* Sent Ishiyama paper to Kraft following our meeting
++ Finish writing project report
++ Talk preparation, draft due to Robinson by Friday *morning*, 9 December 2016
+ - Anticipate speaking Wednesday 14 December 2016
+
+Coyle/Williams:
+* Rewrite the sheaf diagram for the Ishiyama model
+* Try repeating our extension of local sections with the Ishiyama model (as opposed with the paired Goodwin model)
+ - Just do the same computation as we did for paired Goodwin (set P_1, P_1', and then explore u_1', v_1', ...)
+ - How does one country effect another (u_1, v_1, p_1, u_1', v_1') known implies what about the others?
+ - How does this differ between Ishiyama and paired Goodwin?
++ (on hold until Robinson finished pysheaf) Can we identify 2 countries and 2 products and get data?
+
+Kraft:
++ Read Ishiyama paper
+
+Robinson:
++ (In progress) Working through pysheaf trade space analysis
++ (Low priority) How to systematically do bifurcation analysis on a parametrized sheaf model of an ODE system
+ - Essentially, what do global sections of a (pre)sheaf of smooth manifolds look like?  Is there an easy way to examine them using, say, transversality?
+ - Of course, a sheaf of smooth manifolds would need gluing axioms satisfied, which might not work out! We might need stratified manifolds throughout... hmm...

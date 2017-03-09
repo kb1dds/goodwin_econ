@@ -1,0 +1,46 @@
+SIMPLEX notes for economic modeling
+=====
+
+Legend:
+*,-  status item (including tasks for other teams)
++ task
+
+Attendees: Coyle, Williams, Robinson
+
+Synopsis:
+---
+
+* Meeting planned with Evan Kraft (AU Econ) Tuesday, November 29 at 3pm in Gray 226 (Robinson's office)
+ - Realism of the models we've made thus far
+ - Availability of data to test these models
+ - Should vertical trade models include feedback or not?
+
+* Three country model seems to give incorrect results because price offered on different products by Country 2 are required to be the same.  Oops.  This probably means that we need some economic insight
+ - Countries 1 and 3 sell a common good to Country 2, who sells different products to Countries 1 and 3
+ - Using Goodwin model in each country
+ - Ishiyama model for trade between countries 1 and 2, and 2 and 3, but...
+ - There's an additional competitive link between Countries 1 and 3, there's a common price
+
+* Williams and Coyle studied two-country Ishiyama model's equilibria
+ - We can follow most of the derivation, but not all of it.  There's a place where v_i variables disappear and ought to be replaced by K_i variables, but these are inexplicably gone!
+ 
+Action items:
+---
+
+Coyle/Williams:
++ Transform the sheaf model of the two country Ishiyama model into one describing only the equilibria
+ - The stalks become merely the range of each function space, so C^k(R,R^d) becomes R^d
+ - Most of the restriction maps are about the same functionally, though derivative maps become zero maps
++ Compute the global sections of the above sheaf
+ - In doing your computations, this should literally recapitulate the process of computing equilbria.  Make this correspondence explicit, by identifying which equations go where
++ (Next) Question (for two country Ishiyama model): Let's say that we fix price 1. Can we say anything that is happening in country 1? I.e. can we backtrack and make inferences about back in time? If we have a local section at p_1, how far can we extend this section? To the state space? To u_1, v_1.
+ - Does this allow us to inferences about whether the Goodwin model has broken down in country one?
+ - Essentially asking about maximal local sections or approximate sections
++ (Next^2) Build the linearized sheaf for the two country Ishiyama model and verify Ishiyama's stability result
++ (on hold until Robinson finished pysheaf) Can we identify 2 countries and 2 products and get data? 
+
+Robinson:
++ Actually do the pysheaf trade space analysis as promised (for months now!)
++ (Low priority) How to systematically do bifurcation analysis on a parametrized sheaf model of an ODE system
+ - Essentially, what do global sections of a (pre)sheaf of smooth manifolds look like?  Is there an easy way to examine them using, say, transversality?
+ - Of course, a sheaf of smooth manifolds would need gluing axioms satisfied, which might not work out! We might need stratified manifolds throughout... hmm...

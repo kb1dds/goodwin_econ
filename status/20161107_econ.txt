@@ -1,0 +1,36 @@
+SIMPLEX notes for economic modeling
+=====
+
+Legend:
+*,-  status item (including tasks for other teams)
++ task
+
+Attendees: Coyle, Williams, Robinson
+
+Synopsis:
+---
+
+* Williams and Coyle successfully sheafafied the Goodwin model of two countries engaged in horizontal trade. The sheaf appears quite symmetric.
+ - The diagram isn't quite a sheaf because the diagram doesn't commute, though it's easy enough to consider the largest subdiagram that is a sheaf.
+ - No cohomology expected in degree 2 or higher 
+ - From the large state space there is only one path to get to the four corner leaves.
+  . This subspace only depends on p_1 and p_2 (prices) independently u_i, v_i (workers' profit shares and labor force participations) in the separate Goodwin models.
+
+* Question: Let's say that we fix price 1. Can we say anything that is happening in country 1? I.e. can we backtrack and make inferences about back in time? If we have a local section at p_1, how far can we extend this section? To the state space? To u_1, v_1.
+ - Does this allow us to inferences about whether the Goodwin model has broken down in country one?
+ - Essentially asking about maximal local sections or approximate sections
+
+* To extend the model pairwise to more countries, it's pretty simple – just cut and paste. What about vertical trade?
+
+Action items:
+---
+
+Coyle/Williams:
++ Attempt to extend the existing model to more than two countries
+ - How might competition get expressed?  Realize that the sheaf model will at this point be underspecified, but will present a framework for such a model
+ - Literature search: Identify a vertical trade paper to see if that helps to fill out the framework
++ Can we identify 2 countries and 2 products and get data? 
+ - Potentially run this through PySheaf. (Dependent on Robinson (partially) completing a re-architecture exercise)
+
+Coyle:
++ Coyle will contact the econ department to set up a time for us to chat. 

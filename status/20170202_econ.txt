@@ -1,0 +1,70 @@
+SIMPLEX notes for economic modeling
+=====
+
+Legend:
+*,-  status item (including tasks for other teams)
++ task
+
+Attendees: Coyle, Fantie, Williams, Robinson
+
+Note: Next meeting February 9, 11:30am (tentative; subject to rescheduling depending on PNNL visit to AU)
+
+Synopsis:
+---
+
+* Talked about the details of local sections as automated hypothesis generation
+* Talked about encodings of Goodwin/Ishiyama model as sheaves
+ - In particular, we might want to implement the two-level poset version (as described in "Sheaf and duality methods...") instead of the collapsed version, because the diagram commutes automatically
+* Talked about implementation details of sheaves in pysheaf
+ - The assignment to a cell (ie. values of one of the variables) will be a vector (probably numpy array) of timeseries values.  This is NOT stored in a Sheaf instance, but rather in something else (like a Section instance or better an Assignment (yet to be written))
+ - Identity maps present no problems
+ - Derivatives are sparse, block diagonal matrices as one would get from numerical analysis
+ - The other restriction maps should either be linearized (not preferable) or stored wholesale as lambda expressions (preferable, but relies on Dr. Robinson finishing pysheaf rearchitecture exercise)
+
+Action items:
+---
+
+Coyle:
++ Answer questions about your document!
+* Found that a phase transition appears to happen when 5 variables are specified in a local section -- then we can always uniquely extend to at least one other variable
++ Systematically list all local sections, then specify what uniques extensions are possible
+ - Think of this list as being if-then clauses, with the local section being the "if" and the extension being the "then"
+ - Each of these clauses then become testable scientific inferences that we can address using data!
+
+Fantie:
+* Finished reading Philip's document!
+* Looked at pysheaf; basically ready to start!
+* Thesis paperwork apparently done...
++ Remind Dr. Robinson to finish pysheaf rearchitecture!
++ Functional design of the pysheaf implementation of Goodwin model
+ - (later Ishiyama model or others)
+ - Class definitions called out, with cofaces/corestrictions defined
+  . One place where there will be trouble is in defining restriction maps since they're not linear!
+  . Option 1: Linearize!
+  . Option 2: Harrass Robinson to finish his edits to pysheaf!
+ - Data parser...
+  . suggestion is to python pandas library
+  . might need to use a python-based scraping library
+
+Williams:
++ Write an abstract for the Student Research Conference (max 1000 characters)
+ - Share a draft with the group for feedback
+ - Final submission is due February 10
++ Read Philip's document
++ Read up on bifurcation analysis, read Strogatz's book on Dynamical systems
+ - End goal is to understand whether Ishiyama's model goes through any interesting bifurcations when lags in wage responses are introduced
+
+Fantie/Williams:
++ Can we identify 2 countries and 2 products and get data?
+ - Possibly use bundles instead of 2 products as a proxy
+
+Kraft:
++ Read Ishiyama paper
+
+Robinson:
++ Look into how AU hires consultants...
++ (In progress) Working through pysheaf trade space analysis
+ - Aim to get consistency radius
++ (Low priority) How to systematically do bifurcation analysis on a parametrized sheaf model of an ODE system
+ - Essentially, what do global sections of a (pre)sheaf of smooth manifolds look like?  Is there an easy way to examine them using, say, transversality?
+ - Of course, a sheaf of smooth manifolds would need gluing axioms satisfied, which might not work out! We might need stratified manifolds throughout... hmm...

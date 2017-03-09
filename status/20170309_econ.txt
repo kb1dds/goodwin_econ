@@ -12,26 +12,11 @@ Note:
 Synopsis:
 ---
 
-* Reformulated the Goodwin model so that it can support time-varying alpha, beta (time-varying sigma doesn't seem to impact the structure of the equations)
+* Project is now on GitHub!
 
-* Looks like the Phillips curve isn't working correctly
- - We can recover scatter plots for inflation versus employment rate and wage rate verus inflation.  Both plots match what others have done, so we're mostly confident of them.
- - The composition of the two, though, wage rate versus employment rate, seems to not yield a strong correlation!
- - Need to call in Dr. Kraft's help!
+* PySheaf implementation is basically complete
 
-* PySheaf implementation of Goodwin models underway
- - The structure is correct and complete
- - The definition of the restriction maps needs a little help...  Should define LinearMorphism( NUMPY ARRAY ), though
- - A few more attributes for the cells need to be defined, but can be done easily
-   . SheafCell.stalkDim = sum of lengths of the timeseries at that cell
-   . SheafCell.compactClosure = True (unless told otherwise by Dr. Robinson)
-   . SheafCell.metric = accept the default (Euclidean) but there is probably a more generally accepted metric that we ought to use...
- - We talked about "closures" which allow you to encapsulate and hide function arguments like so:
-   ... restriction = SetMorphism(lambda x : eq1(x,alpha,beta,...))
-   where alpha, beta are preloaded variables that should not be exposed to the restriction function
-
-* We'll reconnect with Prof. Kraft once we have data in hand and constants all estimated
- - That way we can get a "blessing" that we're on the right path
+* Worked on understanding Philips curve
 
 Action items:
 ---

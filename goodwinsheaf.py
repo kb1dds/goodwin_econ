@@ -1,5 +1,6 @@
 #Goodwin model sheafification
 #2/7/2017 Samara Fantie & co.
+#Note: NEEDS PYSHEAF TO WORK. LOCATED HERE: https://github.com/kb1dds/pysheaf
 
 #import pandas as pd
 import pysheaf as py

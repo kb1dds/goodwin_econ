@@ -160,8 +160,11 @@ rho_3,gamma_3 = lstsq(cyc_emp[132:264],pcwage_2[132:264])
 rho = [rho_1]*17+[rho_2]*16+[rho_3]*32
 gamma = [gamma_1]*17+[gamma_2]*16+[gamma_3]*32
 
-constants_baked = [alpha, alpha_dot, beta, beta_dot, sigma, rho, gamma]
-variables_baked =[u,v_A]
+constants_baked_A = [alpha, alpha_dot, beta, beta_dot, sigma, rho, gamma]
+variables_baked_A =[u,v_A]
+
+return np.asarray [constants_baked_A]
+return np.asarray [variables_baked_A]
 
 #Convering Lists to .txt
 f = open('constants_annual_final.txt', 'w')
@@ -220,8 +223,11 @@ rho_3,gamma_3 = lstsq(cyc_emp[132:264],pcwage_2[132:264])
 rho = [rho_1]*68+[rho_2]*64+[rho_3]*132
 gamma = [gamma_1]*68+[gamma_2]*64+[gamma_3]*132
 
-constants_baked = [alpha, alpha_dot, beta, beta_dot, sigma, rho, gamma]
-variables_baked =[u_Q,v]
+constants_baked_Q = [alpha, alpha_dot, beta, beta_dot, sigma, rho, gamma]
+variables_baked_Q =[u_Q,v]
+
+return np.asarray [constants_baked_Q]
+return np.asarray [variables_baked_Q]
 
 #Convering Lists to .txt
 f = open('constants_quarterly_final.txt', 'w')

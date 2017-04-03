@@ -113,6 +113,15 @@ def Annual_to_Quarterly(L):
             newL.append(L[i]+.25*m*j)
     return newL
 
+#Make the data readable by the Goodwin Code
+#outputs list of arrays [u and v,alpha, beta, sigma, rho, gamma]
+def parsedata():
+    uandv=np.concatenate(np.asarray(u_Q),np.asarray(v))
+    varlist=[uandv,np.asarray(alpha),np.asarray(beta),np.asarray(sigma),np.asarray(rho),np.asarray(gamma)]
+    return varlist
+#constants_baked_Q = [alpha, alpha_dot, beta, beta_dot, sigma, rho, gamma]
+#variables_baked_Q =[u_Q,v]
+
 #-------Aunnual Data------#
 Labor_Sup_A = Quarterly_to_Annual (Labor_Sup)
 PDI_A= Quarterly_to_Annual (PDI)

@@ -79,6 +79,10 @@ def iden(ts):
     n=np.ts.size
     return np.eye(n)
 
+def checkradii():
+    consistency_radii=[s1.consistencyRadius(case) for case in input_data]
+    return consistency_radii
+    
 #Sheaf Construction
 
 #sheafcell=self,dimension,cofaces=[],compactClosure=True,stalkDim=None,metric=None)
@@ -107,9 +111,10 @@ s1=py.Sheaf([py.SheafCell(dimension=1,stalkDim=(sdim/2),cofaces=[]), \
 
 #How to construct? Taken from search_rescue_test.py
 
-input_data=[py.Section([py.SectionCell(support=0,value=np.array(ts)), # X
-                        py.SectionCell(support=1,value=np.array([-70.662,42.829,11178]))])] # U1
+input_data=[py.Section([py.SectionCell(support=0,value=np.array(ts[:(sdim/2)])), # U
+                        py.SectionCell(support=1,value=np.array(ts[(sdim/2):]))])] # V
 
 # Exhibit the consistency radius of the partially-filled Section with the input data
-consistency_radii=[s1.consistencyRadius(case) for case in input_data]
-print "The consistency_radii is " +str(consistency_radii)
+#consistency_radii=[s1.consistencyRadius(case) for case in input_data]
+cr=checkradii()
+print "The consistency_radii is " +str(cr)

@@ -10,7 +10,7 @@ Resources:
 # du=u(t)(-(alpha+gamma)+(rho*v(t)))
 # dv=v(t)((1/sigma)-(alpha + beta) - u(t)/sigma)
 
-#Sample variables: (.2,.4,.2,.5,.75), (.1,.3,.5,.8,.5)
+#Sample variables: (.2,.4,.2,.5,.75), (.1,.13,1.5,2.8,1.5)
 
 from scipy.integrate import odeint
 from numpy import arange

@@ -66,10 +66,10 @@ def listdiv(L,K):
 #List Division
 
 def listsub(L,K):
-	newL =[]
-	for i in range(len(L)):
-		newL.append(L[i]-K[i])
-	return newL
+    newL =[]
+    for i in range(len(L)):
+        newL.append(L[i]-K[i])
+    return newL
 #Subtraction
 
 def pc12(L):
@@ -113,14 +113,12 @@ def Annual_to_Quarterly(L):
             newL.append(L[i]+.25*m*j)
     return newL
 
-#Make the data readable by the Goodwin Code
-#outputs list of arrays [u and v,alpha, beta, sigma, rho, gamma]
-def parsedata():
-    uandv=np.concatenate(np.asarray(u_Q),np.asarray(v))
-    varlist=[uandv,np.asarray(alpha),np.asarray(beta),np.asarray(sigma),np.asarray(rho),np.asarray(gamma)]
+def parsedata(a,b,c,d,e,f,g):
+    uandv=np.concatenate((np.asarray(a),np.asarray(b)))
+    varlist=[uandv,np.asarray(c),np.asarray(d),np.asarray(e),np.asarray(f),np.asarray(g)]
     return varlist
-#constants_baked_Q = [alpha, alpha_dot, beta, beta_dot, sigma, rho, gamma]
-#variables_baked_Q =[u_Q,v]
+
+
 
 #-------Aunnual Data------#
 Labor_Sup_A = Quarterly_to_Annual (Labor_Sup)
@@ -141,10 +139,10 @@ sigma = listdiv(PDI_A,GDP_A)
 alpha_dot = deriv(alpha)
 beta_dot = deriv(beta)
 
-#----Phillips Curve----#
+#Phillips Curve#
 un_inf = []
 for i in range (len(inf)-4):
-	un_inf.append(inf[i+4]-inf[i])
+    un_inf.append(inf[i+4]-inf[i])
 #Unanticipated Inflation
 
 cyc_unemp = listsub(unrate,nrou)
@@ -155,9 +153,11 @@ cyc_emp = [100-x for x in cyc_unemp]
 pcwage_1 =[.5307198*x+.0241174 for x in inf[0:264]]
 pcwage_2 =[.5307198*x+.0241174 for x in un_inf]
 
-v = [100-x for x in unrate]
+v = [(100-x)/100 for x in unrate]
 v_A = Quarterly_to_Annual (v)
 #Employment Rate
+
+u= [x/100 for x in u]
 
 ##1949-1966##
 rho_1,gamma_1 = lstsq(v[0:68],pcwage_1[0:68])
@@ -169,22 +169,21 @@ rho_3,gamma_3 = lstsq(cyc_emp[132:264],pcwage_2[132:264])
 rho = [rho_1]*17+[rho_2]*16+[rho_3]*32
 gamma = [gamma_1]*17+[gamma_2]*16+[gamma_3]*32
 
-constants_baked_A = [alpha, alpha_dot, beta, beta_dot, sigma, rho, gamma]
-variables_baked_A =[u,v_A]
+#constants_baked_A = [alpha, beta, gamma, rho, sigma]
+#variables_baked_A =[u,v_A]
 
-return np.asarray [constants_baked_A]
-return np.asarray [variables_baked_A]
+parseddata_annual = parsedata(u, v_A, alpha, beta, sigma, rho, gamma)
 
 #Convering Lists to .txt
-f = open('constants_annual_final.txt', 'w')
-for element in constants_baked:
-    f.write((str(element)[1:len(str(element))-1]).replace(' ','')+'\n')
-f.close()
+#f = open('constants_annual_final.txt', 'w')
+#for element in constants_baked_A:
+#    f.write((str(element)[1:len(str(element))-1]).replace(' ','')+'\n')
+#f.close()
 
-f = open('variables_annual_final.txt', 'w')
-for element in variables_baked:
-    f.write((str(element)[1:len(str(element))-1]).replace(' ','')+'\n')
-f.close()
+#f = open('variables_annual_final.txt', 'w')
+#for element in variables_baked_A:
+#    f.write((str(element)[1:len(str(element))-1]).replace(' ','')+'\n')
+#f.close()
 
 
 
@@ -205,10 +204,10 @@ sigma = listdiv(PDI,GDP)
 alpha_dot = deriv(alpha)
 beta_dot = deriv(beta)
 
-#----Phillips Curve----#
+#Phillips Curve#
 un_inf = []
 for i in range (len(inf)-4):
-	un_inf.append(inf[i+4]-inf[i])
+    un_inf.append(inf[i+4]-inf[i])
 #Unanticipated Inflation
 
 cyc_unemp = listsub(unrate,nrou)
@@ -219,7 +218,7 @@ cyc_emp = [100-x for x in cyc_unemp]
 pcwage_1 =[.5307198*x+.0241174 for x in inf[0:264]]
 pcwage_2 =[.5307198*x+.0241174 for x in un_inf]
 
-v = [100-x for x in unrate]
+v = [(100-x)/100 for x in unrate]
 #Employment Rate
 
 ##1949-1966##
@@ -232,19 +231,18 @@ rho_3,gamma_3 = lstsq(cyc_emp[132:264],pcwage_2[132:264])
 rho = [rho_1]*68+[rho_2]*64+[rho_3]*132
 gamma = [gamma_1]*68+[gamma_2]*64+[gamma_3]*132
 
-constants_baked_Q = [alpha, alpha_dot, beta, beta_dot, sigma, rho, gamma]
-variables_baked_Q =[u_Q,v]
+#constants_baked_Q = [alpha, alpha_dot, beta, beta_dot, sigma, rho, gamma]
+#variables_baked_Q =[u_Q,v]
 
-return np.asarray [constants_baked_Q]
-return np.asarray [variables_baked_Q]
+parseddata_quarterly = parsedata(u_Q, v, alpha, beta, sigma, rho, gamma)
 
 #Convering Lists to .txt
-f = open('constants_quarterly_final.txt', 'w')
-for element in constants_baked:
-    f.write((str(element)[1:len(str(element))-1]).replace(' ','')+'\n')
-f.close()
+#f = open('constants_quarterly_final.txt', 'w')
+#for element in constants_baked_Q:
+#    f.write((str(element)[1:len(str(element))-1]).replace(' ','')+'\n')
+#f.close()
 
-f = open('variables_quarterly_final.txt', 'w')
-for element in variables_baked:
-    f.write((str(element)[1:len(str(element))-1]).replace(' ','')+'\n')
-f.close()
+#f = open('variables_quarterly_final.txt', 'w')
+#for element in variables_baked_Q:
+#    f.write((str(element)[1:len(str(element))-1]).replace(' ','')+'\n')
+#f.close()

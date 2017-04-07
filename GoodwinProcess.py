@@ -315,6 +315,7 @@ def ddt(ts):
         dermat[index,index]=(-1/h)
         if index!=(n-1):
             dermat[index,index+1]=(1/h)
+    print "size of derivative is " +str(dermat.shape)
     return dermat 
 
 def iden(ts):
@@ -340,6 +341,10 @@ timeseries=[tsmade,parseddata_quarterly,parseddata_annual]
 ts,alpha,beta,sigma,rho,gamma=tsmade
 
 sdim=ts.size #number of samples for u & v; n+m. For n or m, use sdim/2
+print "size of time series is " +str(sdim)
+
+tsu=ts[:sdim/2]
+tsv=ts[sdim/2:]
 
 s1=py.Sheaf([py.SheafCell(dimension=1,stalkDim=(sdim/2),cofaces=[]), \
             py.SheafCell(dimension=1,stalkDim=(sdim/2),cofaces=[]), \
@@ -364,7 +369,7 @@ s1=py.Sheaf([py.SheafCell(dimension=1,stalkDim=(sdim/2),cofaces=[]), \
 input_data=[py.Section([py.SectionCell(support=0,value=np.array(ts[:(sdim/2)])), # U
                         py.SectionCell(support=1,value=np.array(ts[(sdim/2):])), #V
                         py.SectionCell(support=6,value=np.array(ts[:(sdim/2)])), #U
-                        py.SectionCell(support=7,value=np.array(ts[:(sdim/2)]))])] # V
+                        py.SectionCell(support=7,value=np.array(ts[(sdim/2):]))])] # V
 
 # Exhibit the consistency radius of the partially-filled Section with the input data
 consistency_radii=[s1.consistencyRadius(case) for case in input_data]

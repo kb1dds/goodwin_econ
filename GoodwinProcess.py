@@ -31,12 +31,13 @@ initial=[.5,.5] #check w/ econ
 state=odeint(Goodwin, initial, t)
 
 #state is a two-dimensional array, u in the first column, v in the second
-fig1 = plt.figure()
+#uncomment to have graph plot
+"""fig1 = plt.figure()
 plt.plot(state[:, 0], state[:, 1], 'b-', alpha=0.2)
 plt.ylabel('V')
 plt.xlabel('U')
 plt.show()
-
+"""
 tsmade=parseit(state)
 
 """CONSTANTS CODE----------------------------------------------"""
@@ -321,6 +322,7 @@ def ddt(ts):
 def iden(ts):
     """The identity map from u to u"""
     n=ts.size
+    print "size of the identity map is " +str(np.eye(n).shape)
     return np.eye(n)
 
 def checkradii():
@@ -341,7 +343,7 @@ timeseries=[tsmade,parseddata_quarterly,parseddata_annual]
 ts,alpha,beta,sigma,rho,gamma=tsmade
 
 sdim=ts.size #number of samples for u & v; n+m. For n or m, use sdim/2
-print "size of time series is " +str(sdim)
+print "size of time series is " +str(ts.shape)
 
 tsu=ts[:sdim/2]
 tsv=ts[sdim/2:]
@@ -366,10 +368,10 @@ s1=py.Sheaf([py.SheafCell(dimension=1,stalkDim=(sdim/2),cofaces=[]), \
                                 py.SheafCoface(index=3, orientation=-1, restriction=py.LinearMorphism(ddt(ts)))])])
 
 
-input_data=[py.Section([py.SectionCell(support=0,value=np.array(ts[:(sdim/2)])), # U
-                        py.SectionCell(support=1,value=np.array(ts[(sdim/2):])), #V
-                        py.SectionCell(support=6,value=np.array(ts[:(sdim/2)])), #U
-                        py.SectionCell(support=7,value=np.array(ts[(sdim/2):]))])] # V
+input_data=[py.Section([py.SectionCell(support=0,value=np.array(ts)), # U
+                        py.SectionCell(support=1,value=np.array(ts)), #V
+                        py.SectionCell(support=6,value=np.array(ts)), #U
+                        py.SectionCell(support=7,value=np.array(ts))])] # V
 
 # Exhibit the consistency radius of the partially-filled Section with the input data
 consistency_radii=[s1.consistencyRadius(case) for case in input_data]

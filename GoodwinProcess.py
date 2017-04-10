@@ -368,10 +368,12 @@ s1=py.Sheaf([py.SheafCell(dimension=1,stalkDim=(sdim/2),cofaces=[]), \
                                 py.SheafCoface(index=3, orientation=-1, restriction=py.LinearMorphism(ddt(ts)))])])
 
 
-input_data=[py.Section([py.SectionCell(support=0,value=np.array(ts)), # U
-                        py.SectionCell(support=1,value=np.array(ts)), #V
-                        py.SectionCell(support=6,value=np.array(ts)), #U
-                        py.SectionCell(support=7,value=np.array(ts))])] # V
+input_data=[py.Section([py.SectionCell(support=0,value=np.array(ts[:sdim/2])), # U
+                        py.SectionCell(support=1,value=np.array(ts[sdim/2:])), #V
+                        py.SectionCell(support=4,value=np.array(ts)), #(U,V)
+                        py.SectionCell(support=5,value=np.array(ts)), #(U,V)
+                        py.SectionCell(support=6,value=np.array(ts[:sdim/2])), #U
+                        py.SectionCell(support=7,value=np.array(ts[sdim/2:]))])] # V
 
 # Exhibit the consistency radius of the partially-filled Section with the input data
 consistency_radii=[s1.consistencyRadius(case) for case in input_data]

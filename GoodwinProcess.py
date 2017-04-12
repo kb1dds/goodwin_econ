@@ -270,7 +270,8 @@ def pr1(ts):
     n=length/2
     zeros=np.zeros((n,n))
     proj=np.identity(n)
-    return np.concatenate((proj,zeros))
+    print "Pr1 is size: "+str(np.concatenate((proj,zeros),axis=1).shape)
+    return np.concatenate((proj,zeros),axis=1)
         
 def pr2(ts):
     """The projection from (u,v) to (v)"""
@@ -278,7 +279,8 @@ def pr2(ts):
     n=length/2
     zeros=np.zeros((n,n))
     proj=np.identity(n)
-    return np.concatenate((zeros,proj))
+    print "Pr2 is size: "+str(np.concatenate((zeros,proj),axis=1).shape)
+    return np.concatenate((zeros,proj),axis=1)
 
 def eqn1(ts):
     """Goodwin equation #1 from (u,v) to v' 
@@ -324,10 +326,6 @@ def iden(ts):
     n=ts.size
     print "size of the identity map is " +str(np.eye(n).shape)
     return np.eye(n)
-
-def checkradii():
-    consistency_radii=[s1.consistencyRadius(case) for case in input_data]
-    return consistency_radii
     
 #Sheaf Construction
 
@@ -368,17 +366,16 @@ s1=py.Sheaf([py.SheafCell(dimension=1,stalkDim=(sdim/2),cofaces=[]), \
                                 py.SheafCoface(index=3, orientation=-1, restriction=py.LinearMorphism(ddt(ts)))])])
 
 
-input_data=[py.Section([py.SectionCell(support=0,value=np.array(ts[:sdim/2])), # U
-                        py.SectionCell(support=1,value=np.array(ts[sdim/2:])), #V
-                        py.SectionCell(support=4,value=np.array(ts)), #(U,V)
-                        py.SectionCell(support=5,value=np.array(ts)), #(U,V)
-                        py.SectionCell(support=6,value=np.array(ts[:sdim/2])), #U
-                        py.SectionCell(support=7,value=np.array(ts[sdim/2:]))])] # V
+input_data=[py.Section([py.SectionCell(support=0,value=tsu), # U
+                        py.SectionCell(support=1,value=tsv), #V
+                        py.SectionCell(support=4,value=ts), #(U,V)
+                        py.SectionCell(support=5,value=ts), #(U,V)
+                        py.SectionCell(support=6,value=tsu), #U
+                        py.SectionCell(support=7,value=tsv)])] # V
 
 # Exhibit the consistency radius of the partially-filled Section with the input data
 consistency_radii=[s1.consistencyRadius(case) for case in input_data]
-cr=checkradii()
-print "The consistency_radii is " +str(cr)
+print "The consistency_radii is " +str(consistency_radii)
 fused_data=[s1.fuseAssignment(case) for case in input_data]
 fused_consistency_radii=[s1.consistencyRadius(case) for case in fused_data]
 

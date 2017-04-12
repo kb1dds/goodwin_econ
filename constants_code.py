@@ -245,4 +245,8 @@ parseddata_quarterly = parsedata(u_Q, v, alpha, beta, sigma, rho, gamma)
 #f = open('variables_quarterly_final.txt', 'w')
 #for element in variables_baked_Q:
 #    f.write((str(element)[1:len(str(element))-1]).replace(' ','')+'\n')
+<<<<<<< HEAD
 #f.close()
+=======
+#f.close()
+>>>>>>> master

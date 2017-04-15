@@ -336,8 +336,8 @@ timeseries=[tsmade,parseddata_quarterly,parseddata_annual]
 #for series in timeseries:
 #    ts,alpha,beta,sigma,rho,gamma=series
 
-#ts,alpha,beta,sigma,rho,gamma=tsmade
-ts,alpha,beta,sigma,rho,gamma=parseddata_quarterly
+ts,alpha,beta,sigma,rho,gamma=tsmade
+#ts,alpha,beta,sigma,rho,gamma=parseddata_quarterly
 
 sdim=ts.size #number of samples for u & v; n+m. For n or m, use sdim/2
 print "size of time series is " +str(ts.shape)
@@ -380,4 +380,7 @@ fused_consistency_radii=[s1.consistencyRadius(case) for case in fused_data]
 
 """sample vars for input: (.1,.13,1.5,2.8,1.5)
 The consistency_radii is [6.7134851213605433]
-fused_consistency_radii = [2.1353420358605142]"""
+fused_consistency_radii = [2.1353420358605142]
+
+Parsedata_quarterly:The consistency_radii is [184.59996943046184]
+Did not converge"""

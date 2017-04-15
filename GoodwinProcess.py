@@ -282,33 +282,31 @@ def pr2(ts):
     print "Pr2 is size: "+str(np.concatenate((zeros,proj),axis=1).shape)
     return np.concatenate((zeros,proj),axis=1)
 
-def eqn1(ts):
-    """Goodwin equation #1 from (u,v) to v' 
-    NEEDS SIGMA, ALPHA, BETA """
+def eqn1(ts,alpha,beta,sigma):
+    """Goodwin equation #1 from (u,v) to v' """
     #edited so all variables are arrays
     
     length=ts.size
     n=length/2
-    newts=np.array([])
+    newts=np.zeros((n))
     for index in range(n):
-        newts[:index]=ts[index+n]*(1/sigma[index]-(alpha[index]+beta[index])-(ts[index]/sigma[index])) 
+        newts[index]=ts[index+n]*(1/sigma[index]-(alpha[index]+beta[index])-(ts[index]/sigma[index])) 
     return newts
         
-def eqn2(ts):
-    """Goodwin equation #2 from (u,v) to u' 
-    NEEDS ALPHA, GAMMA, RHO """
+def eqn2(ts,alpha,gamma,rho):
+    """Goodwin equation #2 from (u,v) to u' """
     #edited so all variables are arrays
 
     length=ts.size
     n=length/2
-    newts=np.array([])
+    newts=np.zeros((n))
     for index in range(n):
-        newts[:index]=ts[index]*(-(alpha[index]+gamma[index])+(rho[index]*ts[index+n])) 
+        newts[index]=ts[index]*(-(alpha[index]+gamma[index])+(rho[index]*ts[index+n])) 
     return newts
     
 def ddt(ts):
-    """Derivative of u = u' = d/dt(u) #check derivs!!!!!!!!!
-    NEEDS H for f(x+h)-f(x)/h"""
+    """Derivative of u = u' = d/dt(u)
+    Needs h for f(x+h)-f(x)/h"""
     #set h as desired
     
     h=.1
@@ -338,7 +336,8 @@ timeseries=[tsmade,parseddata_quarterly,parseddata_annual]
 #for series in timeseries:
 #    ts,alpha,beta,sigma,rho,gamma=series
 
-ts,alpha,beta,sigma,rho,gamma=tsmade
+#ts,alpha,beta,sigma,rho,gamma=tsmade
+ts,alpha,beta,sigma,rho,gamma=parseddata_quarterly
 
 sdim=ts.size #number of samples for u & v; n+m. For n or m, use sdim/2
 print "size of time series is " +str(ts.shape)
@@ -353,17 +352,17 @@ s1=py.Sheaf([py.SheafCell(dimension=1,stalkDim=(sdim/2),cofaces=[]), \
             py.SheafCell \
 (dimension=0,stalkDim=sdim,cofaces=[py.SheafCoface(index=0, orientation=1, restriction=py.LinearMorphism(pr1(ts))), \
                                 py.SheafCoface(index=1, orientation=1, restriction=py.LinearMorphism(pr2(ts))), \
-                                py.SheafCoface(index=3, orientation=1, restriction=py.SetMorphism(eqn1(ts)))]), \
+                                py.SheafCoface(index=3, orientation=1, restriction=py.SetMorphism(lambda x: eqn1(x,alpha,beta,sigma)))]), \
             py.SheafCell \
 (dimension=0,stalkDim=sdim,cofaces=[py.SheafCoface(index=0, orientation=-1, restriction=py.LinearMorphism(pr1(ts))), \
                                 py.SheafCoface(index=1, orientation=-1, restriction=py.LinearMorphism(pr2(ts))), \
-                                py.SheafCoface(index=2, orientation=-1, restriction=py.SetMorphism(eqn2(ts)))]), \
+                                py.SheafCoface(index=2, orientation=-1, restriction=py.SetMorphism(lambda x:eqn2(x,alpha,gamma,rho)))]), \
             py.SheafCell \
-(dimension=0,stalkDim=(sdim/2),cofaces=[py.SheafCoface(index=0, orientation=1, restriction=py.LinearMorphism(iden(ts))), \
-                                py.SheafCoface(index=2, orientation=1, restriction=py.LinearMorphism(ddt(ts)))]), \
+(dimension=0,stalkDim=(sdim/2),cofaces=[py.SheafCoface(index=0, orientation=1, restriction=py.LinearMorphism(iden(tsu))), \
+                                py.SheafCoface(index=2, orientation=1, restriction=py.LinearMorphism(ddt(tsu)))]), \
             py.SheafCell \
-(dimension=0,stalkDim=(sdim/2),cofaces=[py.SheafCoface(index=1, orientation=1, restriction=py.LinearMorphism(iden(ts))), \
-                                py.SheafCoface(index=3, orientation=-1, restriction=py.LinearMorphism(ddt(ts)))])])
+(dimension=0,stalkDim=(sdim/2),cofaces=[py.SheafCoface(index=1, orientation=1, restriction=py.LinearMorphism(iden(tsv))), \
+                                py.SheafCoface(index=3, orientation=-1, restriction=py.LinearMorphism(ddt(tsv)))])])
 
 
 input_data=[py.Section([py.SectionCell(support=0,value=tsu), # U
@@ -379,4 +378,6 @@ print "The consistency_radii is " +str(consistency_radii)
 fused_data=[s1.fuseAssignment(case) for case in input_data]
 fused_consistency_radii=[s1.consistencyRadius(case) for case in fused_data]
 
-#sample vars for input: (.1,.13,1.5,2.8,1.5)
+"""sample vars for input: (.1,.13,1.5,2.8,1.5)
+The consistency_radii is [6.7134851213605433]
+fused_consistency_radii = [2.1353420358605142]"""

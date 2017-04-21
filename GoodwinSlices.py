@@ -404,8 +404,8 @@ input_data=[py.Section([py.SectionCell(support=0,value=tsu[:25]), # U
 # Exhibit the consistency radius of the partially-filled Section with the input data
 consistency_radii=[s1.consistencyRadius(case) for case in input_data]
 print "The consistency_radii is " +str(consistency_radii)
-fused_data=[s1.fuseAssignment(case) for case in input_data]
-fused_consistency_radii=[s1.consistencyRadius(case) for case in fused_data]
+#fused_data=[s1.fuseAssignment(case) for case in input_data]
+#fused_consistency_radii=[s1.consistencyRadius(case) for case in fused_data]
 
 """sample vars for input: (.1,.13,1.5,2.8,1.5)
 The consistency_radii is [6.7134851213605433]

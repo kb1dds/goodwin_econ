@@ -325,6 +325,8 @@ def iden(ts):
     print "size of the identity map is " +str(np.eye(n).shape)
     return np.eye(n)
     
+def rms_metric(x,y): return np.linalg.norm(x-y)/len(x)
+
 #Sheaf Construction
 
 #sheafcell=self,dimension,cofaces=[],compactClosure=True,stalkDim=None,metric=None)
@@ -345,23 +347,23 @@ print "size of time series is " +str(ts.shape)
 tsu=ts[:sdim/2]
 tsv=ts[sdim/2:]
 
-s1=py.Sheaf([py.SheafCell(dimension=1,stalkDim=(sdim/2),cofaces=[]), \
-            py.SheafCell(dimension=1,stalkDim=(sdim/2),cofaces=[]), \
-            py.SheafCell(dimension=1,stalkDim=(sdim/2),cofaces=[]), \
-            py.SheafCell(dimension=1,stalkDim=(sdim/2),cofaces=[]), \
+s1=py.Sheaf([py.SheafCell(dimension=1,stalkDim=(sdim/2),metric=rms_metric,cofaces=[]), \
+            py.SheafCell(dimension=1,stalkDim=(sdim/2),metric=rms_metric,cofaces=[]), \
+            py.SheafCell(dimension=1,stalkDim=(sdim/2),metric=rms_metric,cofaces=[]), \
+            py.SheafCell(dimension=1,stalkDim=(sdim/2),metric=rms_metric,cofaces=[]), \
             py.SheafCell \
-(dimension=0,stalkDim=sdim,cofaces=[py.SheafCoface(index=0, orientation=1, restriction=py.LinearMorphism(pr1(ts))), \
+(dimension=0,stalkDim=sdim,metric=rms_metric,cofaces=[py.SheafCoface(index=0, orientation=1, restriction=py.LinearMorphism(pr1(ts))), \
                                 py.SheafCoface(index=1, orientation=1, restriction=py.LinearMorphism(pr2(ts))), \
                                 py.SheafCoface(index=3, orientation=1, restriction=py.SetMorphism(lambda x: eqn1(x,alpha,beta,sigma)))]), \
             py.SheafCell \
-(dimension=0,stalkDim=sdim,cofaces=[py.SheafCoface(index=0, orientation=-1, restriction=py.LinearMorphism(pr1(ts))), \
+(dimension=0,stalkDim=sdim,metric=rms_metric,cofaces=[py.SheafCoface(index=0, orientation=-1, restriction=py.LinearMorphism(pr1(ts))), \
                                 py.SheafCoface(index=1, orientation=-1, restriction=py.LinearMorphism(pr2(ts))), \
                                 py.SheafCoface(index=2, orientation=-1, restriction=py.SetMorphism(lambda x:eqn2(x,alpha,gamma,rho)))]), \
             py.SheafCell \
-(dimension=0,stalkDim=(sdim/2),cofaces=[py.SheafCoface(index=0, orientation=1, restriction=py.LinearMorphism(iden(tsu))), \
+(dimension=0,stalkDim=(sdim/2),metric=rms_metric,cofaces=[py.SheafCoface(index=0, orientation=1, restriction=py.LinearMorphism(iden(tsu))), \
                                 py.SheafCoface(index=2, orientation=1, restriction=py.LinearMorphism(ddt(tsu)))]), \
             py.SheafCell \
-(dimension=0,stalkDim=(sdim/2),cofaces=[py.SheafCoface(index=1, orientation=1, restriction=py.LinearMorphism(iden(tsv))), \
+(dimension=0,stalkDim=(sdim/2),metric=rms_metric,cofaces=[py.SheafCoface(index=1, orientation=1, restriction=py.LinearMorphism(iden(tsv))), \
                                 py.SheafCoface(index=3, orientation=-1, restriction=py.LinearMorphism(ddt(tsv)))])])
 
 
@@ -375,8 +377,8 @@ input_data=[py.Section([py.SectionCell(support=0,value=tsu), # U
 # Exhibit the consistency radius of the partially-filled Section with the input data
 consistency_radii=[s1.consistencyRadius(case) for case in input_data]
 print "The consistency_radii is " +str(consistency_radii)
-fused_data=[s1.fuseAssignment(case) for case in input_data]
-fused_consistency_radii=[s1.consistencyRadius(case) for case in fused_data]
+#fused_data=[s1.fuseAssignment(case) for case in input_data]
+#fused_consistency_radii=[s1.consistencyRadius(case) for case in fused_data]
 
 """sample vars for input: (.1,.13,1.5,2.8,1.5)
 The consistency_radii is [6.7134851213605433]

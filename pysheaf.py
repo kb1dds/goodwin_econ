@@ -725,12 +725,15 @@ class Sheaf(CellComplex):
         """Compute the consistency radius of an approximate section"""
         assignment=self.maximalExtend(assignment,multiassign=True,tol=tol)
         radius=0
+	bigcell=None
         for c1 in assignment.sectionCells:
             for c2 in assignment.sectionCells:
                 if c1.support == c2.support:
                     rad = self.cells[c1.support].metric(c1.value,c2.value)
                     if rad > radius:
                         radius = rad
+			bigcell=c2
+	print (assignment.sectionCells).index(bigcell)
         return radius
 
     def assignmentMetric(self,assignment1,assignment2):

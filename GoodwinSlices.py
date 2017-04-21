@@ -337,7 +337,8 @@ timeseries=[tsmade,parseddata_quarterly,parseddata_annual]
 #bring in the data, format [u and v,alpha, beta, sigma, rho, gamma]
 #for series in timeseries:
 #    ts,alpha,beta,sigma,rho,gamma=series
-
+"""-----------------SLICING FOR CONSTRUCTED DATA-------------------------------"""
+"""
 ts,alpha,beta,sigma,rho,gamma=tsmade
 #ts,alpha,beta,sigma,rho,gamma=parseddata_quarterly
 
@@ -400,12 +401,88 @@ input_data=[py.Section([py.SectionCell(support=0,value=tsu[:25]), # U
                         py.SectionCell(support=5,value=np.concatenate((ts[75:100],ts[175:200]), axis=0)), #(U,V)
                         py.SectionCell(support=6,value=tsu[75:100]), #U
                         py.SectionCell(support=7,value=tsv[75:100])])] # V
+"""
+"""-----------------SLICING FOR NATURAL DATA-------------------------------"""
+ts,alpha,beta,sigma,rho,gamma=parseddata_quarterly
 
+sdim=ts.size #number of samples for u & v; n+m. For n or m, use sdim/2 (528 for quarterly)
+print "size of time series is " +str(ts.shape)
+
+tsu=ts[:sdim/2] #first half of time series (0-263 for tsmade)
+tsv=ts[sdim/2:] #second half of time series (264-528 for tsmade)
+
+s1=py.Sheaf([py.SheafCell(dimension=1,stalkDim=(sdim/2),metric=rms_metric, cofaces=[]), \
+            py.SheafCell(dimension=1,stalkDim=(sdim/2),metric=rms_metric, cofaces=[]), \
+            py.SheafCell(dimension=1,stalkDim=(sdim/2),metric=rms_metric, cofaces=[]), \
+            py.SheafCell(dimension=1,stalkDim=(sdim/2),metric=rms_metric, cofaces=[]), \
+            py.SheafCell \
+(dimension=0,stalkDim=sdim,metric=rms_metric, cofaces=[py.SheafCoface(index=0, orientation=1, restriction=py.LinearMorphism(pr1(np.concatenate((tsu[:45],tsv[:45]), axis=0)))), \
+                                py.SheafCoface(index=1, orientation=1, restriction=py.LinearMorphism(pr2(np.concatenate((ts[:45],ts[:45]), axis=0)))), \
+                                py.SheafCoface(index=3, orientation=1, restriction=py.SetMorphism(lambda x: eqn1(x,alpha,beta,sigma)))]), \
+            py.SheafCell \
+(dimension=0,stalkDim=sdim,metric=rms_metric, cofaces=[py.SheafCoface(index=0, orientation=-1, restriction=py.LinearMorphism(pr1(np.concatenate((ts[:45],ts[:45]), axis=0)))), \
+                                py.SheafCoface(index=1, orientation=-1, restriction=py.LinearMorphism(pr2(np.concatenate((ts[:45],ts[:45]), axis=0)))), \
+                                py.SheafCoface(index=2, orientation=-1, restriction=py.SetMorphism(lambda x:eqn2(x,alpha,gamma,rho)))]), \
+            py.SheafCell \
+(dimension=0,stalkDim=(sdim/2),metric=rms_metric, cofaces=[py.SheafCoface(index=0, orientation=1, restriction=py.LinearMorphism(iden(tsu[:45]))), \
+                                py.SheafCoface(index=2, orientation=1, restriction=py.LinearMorphism(ddt(tsu[:45])))]), \
+            py.SheafCell \
+(dimension=0,stalkDim=(sdim/2),metric=rms_metric, cofaces=[py.SheafCoface(index=1, orientation=1, restriction=py.LinearMorphism(iden(tsv[:45]))), \
+                                py.SheafCoface(index=3, orientation=-1, restriction=py.LinearMorphism(ddt(tsv[:45])))])])
+
+
+input_data=[py.Section([py.SectionCell(support=0,value=tsu[:45]), # U
+                        py.SectionCell(support=1,value=tsv[:45]), #V
+                        py.SectionCell(support=4,value=np.concatenate((tsu[:45],tsv[:45]), axis=0)), #(U,V)
+                        py.SectionCell(support=5,value=np.concatenate((tsu[:45],tsv[:45]), axis=0)), #(U,V)
+                        py.SectionCell(support=6,value=tsu[:45]), #U
+                        py.SectionCell(support=7,value=tsv[:45])]),#V
+            py.Section([py.SectionCell(support=0,value=tsu[44:89]), # U
+                        py.SectionCell(support=1,value=tsv[44:89]), #V
+                        py.SectionCell(support=4,value=np.concatenate((tsu[44:89],tsv[44:89]), axis=0)), #(U,V)
+                        py.SectionCell(support=5,value=np.concatenate((tsu[44:89],tsv[44:89]), axis=0)), #(U,V)
+                        py.SectionCell(support=6,value=tsu[44:89]), #U
+                        py.SectionCell(support=7,value=tsv[44:89])]),
+            py.Section([py.SectionCell(support=0,value=tsu[88:133]), # U
+                        py.SectionCell(support=1,value=tsv[88:133]), #V
+                        py.SectionCell(support=4,value=np.concatenate((tsu[88:133],tsv[88:133]), axis=0)), #(U,V)
+                        py.SectionCell(support=5,value=np.concatenate((tsu[88:133],tsv[88:133]), axis=0)), #(U,V)
+                        py.SectionCell(support=6,value=tsu[88:133]), #U
+                        py.SectionCell(support=7,value=tsv[88:133])]),#v
+            py.Section([py.SectionCell(support=0,value=tsu[132:177]), # U
+                        py.SectionCell(support=1,value=tsv[132:177]), #V
+                        py.SectionCell(support=4,value=np.concatenate((tsu[132:177],tsv[132:177]), axis=0)), #(U,V)
+                        py.SectionCell(support=5,value=np.concatenate((tsu[132:177],tsv[132:177]), axis=0)), #(U,V)
+                        py.SectionCell(support=6,value=tsu[132:177]), #U
+                        py.SectionCell(support=7,value=tsv[132:177])]),#V
+            py.Section([py.SectionCell(support=0,value=tsu[176:221]), # U
+                        py.SectionCell(support=1,value=tsv[176:221]), #V
+                        py.SectionCell(support=4,value=np.concatenate((tsu[176:221],tsv[176:221]), axis=0)), #(U,V)
+                        py.SectionCell(support=5,value=np.concatenate((tsu[176:221],tsv[176:221]), axis=0)), #(U,V)
+                        py.SectionCell(support=6,value=tsu[176:221]), #U
+                        py.SectionCell(support=7,value=tsv[176:221])]),#V
+            py.Section([py.SectionCell(support=0,value=tsu[219:]), # U
+                        py.SectionCell(support=1,value=tsv[219:]), #V
+                        py.SectionCell(support=4,value=np.concatenate((tsu[219:],tsv[219:]), axis=0)), #(U,V)
+                        py.SectionCell(support=5,value=np.concatenate((tsu[219:],tsv[219:]), axis=0)), #(U,V)
+                        py.SectionCell(support=6,value=tsu[219:]), #U
+                        py.SectionCell(support=7,value=tsv[219:])])] # V
+                        
+                        
 # Exhibit the consistency radius of the partially-filled Section with the input data
 consistency_radii=[s1.consistencyRadius(case) for case in input_data]
 print "The consistency_radii is " +str(consistency_radii)
 #fused_data=[s1.fuseAssignment(case) for case in input_data]
 #fused_consistency_radii=[s1.consistencyRadius(case) for case in fused_data]
+
+fig2 = plt.figure()
+#plot made data
+#plt.plot([0,25,50,75,100], consistency_radii, 'b-', alpha=0.2)
+#plot quarterly data
+plt.plot([0,1,2,3,4,5], consistency_radii, 'b-', alpha=0.2)
+plt.ylabel('Consistency Radius')
+plt.xlabel('Section of Data')
+plt.show()
 
 """sample vars for input: (.1,.13,1.5,2.8,1.5)
 The consistency_radii is [6.7134851213605433]

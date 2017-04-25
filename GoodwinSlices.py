@@ -567,11 +567,11 @@ print "The consistency_radii is " +str(consistency_radii)
 
 fig2 = plt.figure()
 #plot made data
-#plt.plot([0,25,50,75,100], consistency_radii, 'b-', alpha=0.2)
+#plt.plot([1949,1962,1975,1988,2001,2014], consistency_radii, 'b-', alpha=0.2)
 #plot quarterly data
-plt.plot([25,49,73,97,121,145,169,193,217,241,240], consistency_radii, 'b-', alpha=0.2)
+plt.plot([1949,1954,1960,1965,1971,1976,1982,1987,1993,1998,2014], consistency_radii, 'b-', alpha=0.8)
 plt.ylabel('Consistency Radius')
-plt.xlabel('Section of Data')
+plt.xlabel('Year (Quarterly Data)')
 plt.show()
 
 """sample vars for input: (.1,.13,1.5,2.8,1.5)

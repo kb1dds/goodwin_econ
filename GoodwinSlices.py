@@ -342,8 +342,7 @@ timeseries=[tsmade,parseddata_quarterly,parseddata_annual]
 ts,alpha,beta,sigma,rho,gamma=tsmade
 #ts,alpha,beta,sigma,rho,gamma=parseddata_quarterly
 
-#sdim=ts.size #number of samples for u & v; n+m. For n or m, use sdim/2 (200 for tsmade)
-sdim=50
+sdim=ts.size #number of samples for u & v; n+m. For n or m, use sdim/2 (200 for tsmade)
 print "size of time series is " +str(ts.shape)
 
 #tsu=ts[:sdim/2] #first half of time series (0-99 for tsmade)
@@ -373,36 +372,37 @@ s1=py.Sheaf([py.SheafCell(dimension=1,stalkDim=(sdim/2),metric=rms_metric, cofac
 
 input_data=[py.Section([py.SectionCell(support=0,value=tsu[:25]), # U
                         py.SectionCell(support=1,value=tsv[:25]), #V
-                        py.SectionCell(support=4,value=np.concatenate((ts[:25],ts[100:125]), axis=0)), #(U,V)
-                        py.SectionCell(support=5,value=np.concatenate((ts[:25],ts[100:125]), axis=0)), #(U,V)
+                        py.SectionCell(support=4,value=np.concatenate((tsu[:25],tsv[:25]), axis=0)), #(U,V)
+                        py.SectionCell(support=5,value=np.concatenate((tsu[:25],tsv[:25]), axis=0)), #(U,V)
                         py.SectionCell(support=6,value=tsu[:25]), #U
                         py.SectionCell(support=7,value=tsv[:25])]),#V
             py.Section([py.SectionCell(support=0,value=tsu[20:45]), # U
                         py.SectionCell(support=1,value=tsv[20:45]), #V
-                        py.SectionCell(support=4,value=np.concatenate((ts[20:45],ts[120:145]), axis=0)), #(U,V)
-                        py.SectionCell(support=5,value=np.concatenate((ts[20:45],ts[120:145]), axis=0)), #(U,V)
+                        py.SectionCell(support=4,value=np.concatenate((tsu[20:45],tsv[20:45]), axis=0)), #(U,V)
+                        py.SectionCell(support=5,value=np.concatenate((tsu[20:45],tsv[20:45]), axis=0)), #(U,V)
                         py.SectionCell(support=6,value=tsu[20:45]), #U
                         py.SectionCell(support=7,value=tsv[20:45])]),
             py.Section([py.SectionCell(support=0,value=tsu[40:65]), # U
                         py.SectionCell(support=1,value=tsv[40:65]), #V
-                        py.SectionCell(support=4,value=np.concatenate((ts[40:65],ts[140:165]), axis=0)), #(U,V)
-                        py.SectionCell(support=5,value=np.concatenate((ts[40:65],ts[140:165]), axis=0)), #(U,V)
+                        py.SectionCell(support=4,value=np.concatenate((tsu[40:65],tsv[40:65]), axis=0)), #(U,V)
+                        py.SectionCell(support=5,value=np.concatenate((tsu[40:65],tsv[40:65]), axis=0)), #(U,V)
                         py.SectionCell(support=6,value=tsu[40:65]), #U
                         py.SectionCell(support=7,value=tsv[40:65])]),#v
             py.Section([py.SectionCell(support=0,value=tsu[60:85]), # U
                         py.SectionCell(support=1,value=tsv[60:85]), #V
-                        py.SectionCell(support=4,value=np.concatenate((ts[60:85],ts[160:185]), axis=0)), #(U,V)
-                        py.SectionCell(support=5,value=np.concatenate((ts[60:85],ts[160:185]), axis=0)), #(U,V)
+                        py.SectionCell(support=4,value=np.concatenate((tsu[60:85],tsv[60:85]), axis=0)), #(U,V)
+                        py.SectionCell(support=5,value=np.concatenate((tsu[60:85],tsv[60:85]), axis=0)), #(U,V)
                         py.SectionCell(support=6,value=tsu[60:85]), #U
                         py.SectionCell(support=7,value=tsv[60:85])]),#V
             py.Section([py.SectionCell(support=0,value=tsu[75:100]), # U
                         py.SectionCell(support=1,value=tsv[75:100]), #V
-                        py.SectionCell(support=4,value=np.concatenate((ts[75:100],ts[175:200]), axis=0)), #(U,V)
-                        py.SectionCell(support=5,value=np.concatenate((ts[75:100],ts[175:200]), axis=0)), #(U,V)
+                        py.SectionCell(support=4,value=np.concatenate((tsu[75:100],tsv[75:100]), axis=0)), #(U,V)
+                        py.SectionCell(support=5,value=np.concatenate((tsu[75:100],tsv[75:100]), axis=0)), #(U,V)
                         py.SectionCell(support=6,value=tsu[75:100]), #U
                         py.SectionCell(support=7,value=tsv[75:100])])] # V
 """
 """-----------------SLICING FOR NATURAL DATA-------------------------------"""
+
 ts,alpha,beta,sigma,rho,gamma=parseddata_quarterly
 
 sdim=ts.size #number of samples for u & v; n+m. For n or m, use sdim/2 (528 for quarterly)
@@ -411,8 +411,9 @@ print "size of time series is " +str(ts.shape)
 tsu=ts[:sdim/2] #first half of time series (0-263 for tsmade)
 tsv=ts[sdim/2:] #second half of time series (264-528 for tsmade)
 
+
 """----------------SLICE 1---------------------------------------------"""
-"""
+
 s1=py.Sheaf([py.SheafCell(dimension=1,stalkDim=(sdim/2),metric=rms_metric, cofaces=[]), \
             py.SheafCell(dimension=1,stalkDim=(sdim/2),metric=rms_metric, cofaces=[]), \
             py.SheafCell(dimension=1,stalkDim=(sdim/2),metric=rms_metric, cofaces=[]), \
@@ -469,8 +470,9 @@ input_data=[py.Section([py.SectionCell(support=0,value=tsu[:45]), # U
                         py.SectionCell(support=5,value=np.concatenate((tsu[219:],tsv[219:]), axis=0)), #(U,V)
                         py.SectionCell(support=6,value=tsu[219:]), #U
                         py.SectionCell(support=7,value=tsv[219:])])] # V
-"""                      
+                     
 """---------------------------SLICE 2----------------------------------------"""
+"""
 s1=py.Sheaf([py.SheafCell(dimension=1,stalkDim=(sdim/2),metric=rms_metric, cofaces=[]), \
             py.SheafCell(dimension=1,stalkDim=(sdim/2),metric=rms_metric, cofaces=[]), \
             py.SheafCell(dimension=1,stalkDim=(sdim/2),metric=rms_metric, cofaces=[]), \
@@ -557,7 +559,7 @@ input_data=[py.Section([py.SectionCell(support=0,value=tsu[:25]), # U
                         py.SectionCell(support=5,value=np.concatenate((tsu[239:],tsv[239:]), axis=0)), #(U,V)
                         py.SectionCell(support=6,value=tsu[239:]), #U
                         py.SectionCell(support=7,value=tsv[239:])])]
-                        
+   """                     
 """-----------------------------------END SLICE 2-----------------------------------"""                      
 # Exhibit the consistency radius of the partially-filled Section with the input data
 consistency_radii=[s1.consistencyRadius(case) for case in input_data]
@@ -566,10 +568,14 @@ print "The consistency_radii is " +str(consistency_radii)
 #fused_consistency_radii=[s1.consistencyRadius(case) for case in fused_data]
 
 fig2 = plt.figure()
-#plot made data
-#plt.plot([1949,1962,1975,1988,2001,2014], consistency_radii, 'b-', alpha=0.2)
-#plot quarterly data
-plt.plot([1949,1954,1960,1965,1971,1976,1982,1987,1993,1998,2014], consistency_radii, 'b-', alpha=0.8)
+
+#-----------plot made data
+#plt.plot([0,25,50,75,100], consistency_radii, 'b-', alpha=1)
+
+#----------plot quarterly data
+plt.plot([1949,1962,1975,1988,2001,2014], consistency_radii, 'b-', alpha=1)
+#plt.plot([1949,1954,1960,1965,1971,1976,1982,1987,1993,1998,2014], consistency_radii, 'b-', alpha=1)
+
 plt.ylabel('Consistency Radius')
 plt.xlabel('Year (Quarterly Data)')
 plt.show()

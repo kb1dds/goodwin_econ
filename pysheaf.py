@@ -733,7 +733,7 @@ class Sheaf(CellComplex):
                     if rad > radius:
                         radius = rad
 			bigcell=c2
-	print (assignment.sectionCells).index(bigcell)
+	print "index of cell causing biggest CR:: " +str(bigcell.support)
         return radius
 
     def assignmentMetric(self,assignment1,assignment2):
